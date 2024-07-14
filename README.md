@@ -1,6 +1,6 @@
 # My Simple Webpage
 
-This is a simple HTML webpage created as an example.
+This is a simple HTML webpage.
 
 ## Description
 
