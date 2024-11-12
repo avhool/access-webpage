@@ -77,8 +77,11 @@
         <div id="signUpContainer" class="form-container active">
             <form id="signUpForm">
                 <h2>Sign Up</h2>
+                <input type="text" id="signUpFullName" placeholder="Full Name">
+                <input type="email" id="signUpEmail" placeholder="Email Address">
                 <input type="text" id="signUpUsername" placeholder="Username">
                 <input type="password" id="signUpPassword" placeholder="Password">
+                <input type="password" id="signUpConfirmPassword" placeholder="Confirm Password">
                 <button type="submit">Sign Up</button>
             </form>
             <div class="toggle-link" onclick="toggleForms()">Here before? Sign In</div>
@@ -103,10 +106,22 @@
 
         document.getElementById('signUpForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            let fullName = document.getElementById('signUpFullName').value;
+            let email = document.getElementById('signUpEmail').value;
             let username = document.getElementById('signUpUsername').value;
             let password = document.getElementById('signUpPassword').value;
+            let confirmPassword = document.getElementById('signUpConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
+            localStorage.setItem('fullName', fullName);
+            localStorage.setItem('email', email);
+
             alert('Sign up successful!');
             toggleForms();
         });
